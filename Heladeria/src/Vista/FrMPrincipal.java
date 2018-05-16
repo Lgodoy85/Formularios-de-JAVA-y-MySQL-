@@ -5,6 +5,11 @@
  */
 package Vista;
 
+import java.util.Iterator;
+import java.util.List;
+import javax.swing.DefaultListModel;
+import javax.swing.table.TableModel;
+
 /**
  *
  * @author alumno
@@ -16,6 +21,24 @@ public class FrMPrincipal extends javax.swing.JFrame {
      */
     public FrMPrincipal() {
         initComponents();
+        pnlPrincipal.removeAllItems();
+   
+    }
+    
+    public void cargarListadoTabla(){
+    DefaultListModel modelo = new DefaultListModel();
+    tbListado.setModel((TableModel) modelo);
+    
+        List datos=Jugadas.listarJugadas();
+        Iterator iter= datos.iterator();
+        
+        while(iter.hasNext()){
+              Jugadas j= (Jugadas)iter.next();
+              
+              //modelo.addElement();
+        }
+        
+        
     }
 
     /**
