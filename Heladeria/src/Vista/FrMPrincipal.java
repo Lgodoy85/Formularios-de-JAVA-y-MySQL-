@@ -27,26 +27,52 @@ public class FrMPrincipal extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        jDesktopPane1 = new javax.swing.JDesktopPane();
         jMenuBar1 = new javax.swing.JMenuBar();
         jMenu1 = new javax.swing.JMenu();
-        jMenuItem1 = new javax.swing.JMenuItem();
-        jMenuItem2 = new javax.swing.JMenuItem();
-        jMenu2 = new javax.swing.JMenu();
+        pnlPrincipal = new javax.swing.JMenuItem();
+        pbllistado = new javax.swing.JMenuItem();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        jMenu1.setText("Helado");
+        javax.swing.GroupLayout jDesktopPane1Layout = new javax.swing.GroupLayout(jDesktopPane1);
+        jDesktopPane1.setLayout(jDesktopPane1Layout);
+        jDesktopPane1Layout.setHorizontalGroup(
+            jDesktopPane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 402, Short.MAX_VALUE)
+        );
+        jDesktopPane1Layout.setVerticalGroup(
+            jDesktopPane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 288, Short.MAX_VALUE)
+        );
 
-        jMenuItem1.setText("Nuevo");
-        jMenu1.add(jMenuItem1);
+        jMenu1.setText("btnNuevoHelado");
+        jMenu1.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        jMenu1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenu1ActionPerformed(evt);
+            }
+        });
 
-        jMenuItem2.setText("Listado");
-        jMenu1.add(jMenuItem2);
+        pnlPrincipal.setText("Nuevo Helado");
+        pnlPrincipal.setActionCommand("btnHleadoNuevo");
+        pnlPrincipal.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        pnlPrincipal.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                pnlPrincipalActionPerformed(evt);
+            }
+        });
+        jMenu1.add(pnlPrincipal);
+
+        pbllistado.setText("btnListarHelado");
+        pbllistado.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                pbllistadoActionPerformed(evt);
+            }
+        });
+        jMenu1.add(pbllistado);
 
         jMenuBar1.add(jMenu1);
-
-        jMenu2.setText("Edit");
-        jMenuBar1.add(jMenu2);
 
         setJMenuBar(jMenuBar1);
 
@@ -54,15 +80,35 @@ public class FrMPrincipal extends javax.swing.JFrame {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 400, Short.MAX_VALUE)
+            .addComponent(jDesktopPane1)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 279, Short.MAX_VALUE)
+            .addComponent(jDesktopPane1)
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void pbllistadoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_pbllistadoActionPerformed
+    
+        FRMListado frmlistado = new FRMListado();
+        frmlistado.setVisible(true);
+        pbllistado.add(frmlistado);
+        
+    }//GEN-LAST:event_pbllistadoActionPerformed
+
+    private void jMenu1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenu1ActionPerformed
+    
+ 
+    }//GEN-LAST:event_jMenu1ActionPerformed
+
+    private void pnlPrincipalActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_pnlPrincipalActionPerformed
+    
+        FrMPrincipal frmhelado = new FrMPrincipal();
+        frmhelado.setVisible(true);
+        pnlPrincipal.add(frmhelado);
+    }//GEN-LAST:event_pnlPrincipalActionPerformed
 
     /**
      * @param args the command line arguments
@@ -100,10 +146,10 @@ public class FrMPrincipal extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JDesktopPane jDesktopPane1;
     private javax.swing.JMenu jMenu1;
-    private javax.swing.JMenu jMenu2;
     private javax.swing.JMenuBar jMenuBar1;
-    private javax.swing.JMenuItem jMenuItem1;
-    private javax.swing.JMenuItem jMenuItem2;
+    private javax.swing.JMenuItem pbllistado;
+    private javax.swing.JMenuItem pnlPrincipal;
     // End of variables declaration//GEN-END:variables
 }

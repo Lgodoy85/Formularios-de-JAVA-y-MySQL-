@@ -1,6 +1,8 @@
 package heladeria;
 
 import Vista.FrMPrincipal;
+import dao.HeladeriaDao;
+import dao.conexion;
 
 public class Heladeria {
 
@@ -12,6 +14,17 @@ public class Heladeria {
  
         nuevoFormulario.setDefaultCloseOperation(nuevoFormulario.EXIT_ON_CLOSE);
         nuevoFormulario.setVisible(true);
+        
+        
+            HeladeriaDao h = new HeladeriaDao();
+            conexion c=  new conexion();
+            if(c.RetornarConeccion()!=null){
+                System.out.println("exito");
+            }else{
+                System.out.println("No anda che");
+            }
+        
+        
         
     }
     
