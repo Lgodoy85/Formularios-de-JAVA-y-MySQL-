@@ -6,26 +6,29 @@
 package Vista;
 
 import Entidades.Helado;
+import Entidades.Venta;
+import java.util.Iterator;
 
 /**
  *
  * @author alumno
  */
-public class frmHelado extends javax.swing.JInternalFrame {
-
+public class frmVenta extends javax.swing.JInternalFrame {
+    private double precio=50;
     private static int cantidad;
-
     /**
-     * Creates new form frmHelado
+     * Creates new form frmVenta
      */
-    public frmHelado() throws Exception {
+    public frmVenta() throws Exception {
         initComponents();
         if (cantidad == 1) {
             throw new Exception();
         }
-        this.cantidad = 1;
+        this.cantidad=1;
+        //cbHelados.removeAllItems();
+        llenarCombo();
     }
-
+    
     public static boolean PuedoCrearOtra() {
 
         boolean retorno = false;
@@ -34,6 +37,16 @@ public class frmHelado extends javax.swing.JInternalFrame {
         }
 
         return retorno;
+    }
+    
+    public void llenarCombo(){
+        Iterator iter  = Helado.ListarHelados().iterator();
+        
+        while(iter.hasNext()){
+          Helado h = (Helado)iter.next();
+          this.cbHelados.addItem(h.getSabor());
+        }
+              
     }
 
     /**
@@ -45,10 +58,10 @@ public class frmHelado extends javax.swing.JInternalFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        txtSabor = new javax.swing.JTextField();
-        jLabel1 = new javax.swing.JLabel();
+        cbHelados = new javax.swing.JComboBox<>();
+        txtCantidad = new javax.swing.JTextField();
         btnAceptar = new javax.swing.JButton();
-        btnCancelar = new javax.swing.JButton();
+        bntSalir = new javax.swing.JButton();
 
         addInternalFrameListener(new javax.swing.event.InternalFrameListener() {
             public void internalFrameActivated(javax.swing.event.InternalFrameEvent evt) {
@@ -68,9 +81,11 @@ public class frmHelado extends javax.swing.JInternalFrame {
             }
         });
 
-        txtSabor.setToolTipText("Ingrese sabor");
-
-        jLabel1.setText("Helado");
+        cbHelados.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cbHeladosActionPerformed(evt);
+            }
+        });
 
         btnAceptar.setText("Aceptar");
         btnAceptar.addActionListener(new java.awt.event.ActionListener() {
@@ -79,10 +94,10 @@ public class frmHelado extends javax.swing.JInternalFrame {
             }
         });
 
-        btnCancelar.setText("Cancelar");
-        btnCancelar.addActionListener(new java.awt.event.ActionListener() {
+        bntSalir.setText("Salir");
+        bntSalir.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnCancelarActionPerformed(evt);
+                bntSalirActionPerformed(evt);
             }
         });
 
@@ -91,63 +106,63 @@ public class frmHelado extends javax.swing.JInternalFrame {
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
+                .addGap(37, 37, 37)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(90, 90, 90)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(txtSabor, javax.swing.GroupLayout.PREFERRED_SIZE, 191, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(btnAceptar)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(btnCancelar))))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(156, 156, 156)
-                        .addComponent(jLabel1)))
-                .addContainerGap(90, Short.MAX_VALUE))
+                    .addComponent(cbHelados, javax.swing.GroupLayout.PREFERRED_SIZE, 148, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btnAceptar, javax.swing.GroupLayout.PREFERRED_SIZE, 97, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(31, 31, 31)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(txtCantidad, javax.swing.GroupLayout.PREFERRED_SIZE, 98, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(bntSalir, javax.swing.GroupLayout.PREFERRED_SIZE, 97, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(77, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(24, 24, 24)
-                .addComponent(jLabel1)
-                .addGap(18, 18, 18)
-                .addComponent(txtSabor, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(29, 29, 29)
+                .addGap(70, 70, 70)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(btnAceptar)
-                    .addComponent(btnCancelar))
-                .addContainerGap(43, Short.MAX_VALUE))
+                    .addComponent(cbHelados, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(txtCantidad, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 56, Short.MAX_VALUE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(btnAceptar, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(bntSalir, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(41, 41, 41))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void btnCancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCancelarActionPerformed
-        this.cantidad = 0;
-        this.hide();
-    }//GEN-LAST:event_btnCancelarActionPerformed
+    private void cbHeladosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cbHeladosActionPerformed
+        
+    }//GEN-LAST:event_cbHeladosActionPerformed
 
     private void btnAceptarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAceptarActionPerformed
-        //tomar el sabor
-        //crear una instancia de helado
-        //llamar al metodo guardar  de helado
-        Helado helado = new Helado();
-        helado.setId(0);
-        helado.setSabor(txtSabor.getText());
-
-        Helado.guardarUnHelado(helado);
-            
+        Venta v = new Venta();
+        v.setHelado(cbHelados.getSelectedItem().toString());
+        v.setCantidad(Integer.parseInt(txtCantidad.getText()));
+        v.setImporte(this.precio*v.getCantidad());
+        v.setFecha("18/05/1999");
+        v.setIdVenta(0);
+        
+        Venta.guardarVenta(v);
     }//GEN-LAST:event_btnAceptarActionPerformed
+
+    private void bntSalirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bntSalirActionPerformed
+       this.cantidad = 0;
+        this.hide();
+    }//GEN-LAST:event_bntSalirActionPerformed
 
     private void formInternalFrameClosing(javax.swing.event.InternalFrameEvent evt) {//GEN-FIRST:event_formInternalFrameClosing
         this.cantidad = 0;
+        
     }//GEN-LAST:event_formInternalFrameClosing
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton bntSalir;
     private javax.swing.JButton btnAceptar;
-    private javax.swing.JButton btnCancelar;
-    private javax.swing.JLabel jLabel1;
-    private javax.swing.JTextField txtSabor;
+    private javax.swing.JComboBox<String> cbHelados;
+    private javax.swing.JTextField txtCantidad;
     // End of variables declaration//GEN-END:variables
 }

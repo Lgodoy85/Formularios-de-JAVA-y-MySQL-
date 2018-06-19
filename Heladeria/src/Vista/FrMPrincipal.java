@@ -5,42 +5,41 @@
  */
 package Vista;
 
-import java.util.Iterator;
-import java.util.List;
-import javax.swing.DefaultListModel;
-import javax.swing.table.TableModel;
+import javax.swing.JInternalFrame;
+import javax.swing.JOptionPane;
 
 /**
  *
  * @author alumno
  */
-public class FrMPrincipal extends javax.swing.JFrame {
+public class frmPrincipal extends javax.swing.JFrame {
 
     /**
-     * Creates new form FrMPrincipal
+     * Creates new form frmPrincipal
      */
-    public FrMPrincipal() {
+    public frmPrincipal() {
         initComponents();
-        pnlPrincipal.removeAllItems();
-   
-    }
-    
-    public void cargarListadoTabla(){
-    DefaultListModel modelo = new DefaultListModel();
-    tbListado.setModel((TableModel) modelo);
-    
-        List datos=Jugadas.listarJugadas();
-        Iterator iter= datos.iterator();
-        
-        while(iter.hasNext()){
-              Jugadas j= (Jugadas)iter.next();
-              
-              //modelo.addElement();
-        }
-        
-        
     }
 
+    /* para hacer formulario unico
+    public void controlarInstancia(JInternalFrame inter){
+        boolean mostrar=true;
+        
+        for (int i = 0; i < PanelPrincipal.getComponentCount(); i++) {
+            if(inter.getClass().isInstance(PanelPrincipal.getComponent(i))){
+                mostrar=false;
+            }
+        }
+        
+        if(mostrar){
+            inter.setClosable(true);
+            inter.setMaximizable(true);
+            PanelPrincipal.add(inter);
+            inter.setVisible(true);
+        }
+    }
+     */
+    
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -50,52 +49,63 @@ public class FrMPrincipal extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jDesktopPane1 = new javax.swing.JDesktopPane();
+        PanelPrincipal = new javax.swing.JDesktopPane();
         jMenuBar1 = new javax.swing.JMenuBar();
-        jMenu1 = new javax.swing.JMenu();
-        pnlPrincipal = new javax.swing.JMenuItem();
-        pbllistado = new javax.swing.JMenuItem();
+        mHelado = new javax.swing.JMenu();
+        btnNuevoHelado = new javax.swing.JMenuItem();
+        btnListarHelados = new javax.swing.JMenuItem();
+        miVender = new javax.swing.JMenuItem();
+        miListarVentas = new javax.swing.JMenuItem();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        javax.swing.GroupLayout jDesktopPane1Layout = new javax.swing.GroupLayout(jDesktopPane1);
-        jDesktopPane1.setLayout(jDesktopPane1Layout);
-        jDesktopPane1Layout.setHorizontalGroup(
-            jDesktopPane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 402, Short.MAX_VALUE)
+        javax.swing.GroupLayout PanelPrincipalLayout = new javax.swing.GroupLayout(PanelPrincipal);
+        PanelPrincipal.setLayout(PanelPrincipalLayout);
+        PanelPrincipalLayout.setHorizontalGroup(
+            PanelPrincipalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 466, Short.MAX_VALUE)
         );
-        jDesktopPane1Layout.setVerticalGroup(
-            jDesktopPane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+        PanelPrincipalLayout.setVerticalGroup(
+            PanelPrincipalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGap(0, 288, Short.MAX_VALUE)
         );
 
-        jMenu1.setText("btnNuevoHelado");
-        jMenu1.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
-        jMenu1.addActionListener(new java.awt.event.ActionListener() {
+        mHelado.setText("Helado");
+
+        btnNuevoHelado.setText("Nuevo helado");
+        btnNuevoHelado.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        btnNuevoHelado.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jMenu1ActionPerformed(evt);
+                btnNuevoHeladoActionPerformed(evt);
             }
         });
+        mHelado.add(btnNuevoHelado);
 
-        pnlPrincipal.setText("Nuevo Helado");
-        pnlPrincipal.setActionCommand("btnHleadoNuevo");
-        pnlPrincipal.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
-        pnlPrincipal.addActionListener(new java.awt.event.ActionListener() {
+        btnListarHelados.setText("Listar helados");
+        btnListarHelados.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                pnlPrincipalActionPerformed(evt);
+                btnListarHeladosActionPerformed(evt);
             }
         });
-        jMenu1.add(pnlPrincipal);
+        mHelado.add(btnListarHelados);
 
-        pbllistado.setText("btnListarHelado");
-        pbllistado.addActionListener(new java.awt.event.ActionListener() {
+        miVender.setText("Vender");
+        miVender.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                pbllistadoActionPerformed(evt);
+                miVenderActionPerformed(evt);
             }
         });
-        jMenu1.add(pbllistado);
+        mHelado.add(miVender);
 
-        jMenuBar1.add(jMenu1);
+        miListarVentas.setText("Listar ventas");
+        miListarVentas.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                miListarVentasActionPerformed(evt);
+            }
+        });
+        mHelado.add(miListarVentas);
+
+        jMenuBar1.add(mHelado);
 
         setJMenuBar(jMenuBar1);
 
@@ -103,35 +113,87 @@ public class FrMPrincipal extends javax.swing.JFrame {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jDesktopPane1)
+            .addComponent(PanelPrincipal, javax.swing.GroupLayout.Alignment.TRAILING)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jDesktopPane1)
+            .addComponent(PanelPrincipal)
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void pbllistadoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_pbllistadoActionPerformed
-    
-        FRMListado frmlistado = new FRMListado();
-        frmlistado.setVisible(true);
-        pbllistado.add(frmlistado);
-        
-    }//GEN-LAST:event_pbllistadoActionPerformed
+    private void btnListarHeladosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnListarHeladosActionPerformed
+        //frmListadoHelados formulario = new frmListadoHelados();
+        //this.controlarInstancia(formulario);
+        try {
+            if (frmListadoHelados.PuedoCrearOtra()) 
+            {
+                frmListadoHelados formulario = new frmListadoHelados();
+                PanelPrincipal.add(formulario);
+                formulario.setVisible(true);
+                formulario.setClosable(true);
+                formulario.setMaximizable(true);
 
-    private void jMenu1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenu1ActionPerformed
-    
- 
-    }//GEN-LAST:event_jMenu1ActionPerformed
+            }
+        } catch (Exception e) {
+            System.out.println("error "+e.toString());
+            JOptionPane.showMessageDialog(null, "Ya tiene la ventana abierta!");
+        }
 
-    private void pnlPrincipalActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_pnlPrincipalActionPerformed
-    
-        FrMPrincipal frmhelado = new FrMPrincipal();
-        frmhelado.setVisible(true);
-        pnlPrincipal.add(frmhelado);
-    }//GEN-LAST:event_pnlPrincipalActionPerformed
+    }//GEN-LAST:event_btnListarHeladosActionPerformed
+
+    private void btnNuevoHeladoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnNuevoHeladoActionPerformed
+        //frmHelado formulario = new frmHelado();
+        //this.controlarInstancia(formulario);
+
+//        try {
+//            if (frmHelado.PuedoCrearOtra()) {
+//                frmHelado formulario = new frmHelado();
+//                PanelPrincipal.add(formulario);
+//                formulario.setVisible(true);
+//                formulario.setClosable(true);
+//                formulario.setMaximizable(true);
+//            }
+//        } catch (Exception e) {
+//        }
+
+        try {
+            frmHeladoConFoto frm = new frmHeladoConFoto();
+            PanelPrincipal.add(frm);
+            frm.setMaximizable(true);
+            frm.setClosable(true);
+            frm.setVisible(true);
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(null, "Ya tiene la ventana abierta!");
+        }
+            
+
+    }//GEN-LAST:event_btnNuevoHeladoActionPerformed
+
+    private void miVenderActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_miVenderActionPerformed
+        try {
+            frmVenta frm = new frmVenta();
+            PanelPrincipal.add(frm);
+            frm.setMaximizable(true);
+            frm.setClosable(true);
+            frm.setVisible(true);
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(null, "Ya tiene la ventana abierta!");
+        }
+    }//GEN-LAST:event_miVenderActionPerformed
+
+    private void miListarVentasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_miListarVentasActionPerformed
+        try {
+            frmListadoVentas frm = new frmListadoVentas();
+            PanelPrincipal.add(frm);
+            frm.setMaximizable(true);
+            frm.setClosable(true);
+            frm.setVisible(true);
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(null, "Ya tiene la ventana abierta!");
+        }
+    }//GEN-LAST:event_miListarVentasActionPerformed
 
     /**
      * @param args the command line arguments
@@ -150,29 +212,31 @@ public class FrMPrincipal extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(FrMPrincipal.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(frmPrincipal.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(FrMPrincipal.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(frmPrincipal.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(FrMPrincipal.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(frmPrincipal.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(FrMPrincipal.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(frmPrincipal.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
         //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new FrMPrincipal().setVisible(true);
+                new frmPrincipal().setVisible(true);
             }
         });
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JDesktopPane jDesktopPane1;
-    private javax.swing.JMenu jMenu1;
+    private javax.swing.JDesktopPane PanelPrincipal;
+    private javax.swing.JMenuItem btnListarHelados;
+    private javax.swing.JMenuItem btnNuevoHelado;
     private javax.swing.JMenuBar jMenuBar1;
-    private javax.swing.JMenuItem pbllistado;
-    private javax.swing.JMenuItem pnlPrincipal;
+    private javax.swing.JMenu mHelado;
+    private javax.swing.JMenuItem miListarVentas;
+    private javax.swing.JMenuItem miVender;
     // End of variables declaration//GEN-END:variables
 }

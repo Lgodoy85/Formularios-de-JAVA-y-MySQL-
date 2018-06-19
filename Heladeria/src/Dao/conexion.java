@@ -7,41 +7,34 @@ package dao;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
-import java.sql.SQLException;
-import java.util.ArrayList;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 
 /**
  *
  * @author alumno
  */
 public class conexion {
-    String jdbc_driver="com.mysql.jdbc.Driver";
-    String jdbc_url="jdbc:mysql://localhost:3306/";
-    String jdbc_user="root";
-    String jdbc_pass="";
-    String bd="heladeria";
-    
-    private Connection cn;
 
-    public conexion(){
-        
+    String jdbc_driver = "com.mysql.jdbc.Driver";
+    String jdbc_url = "jdbc:mysql://localhost:3306/";
+    String jdbc_user = "root";
+    String jdbc_pass = "";
+    String bd = "heladeria";
+
+    private static Connection cn;
+
+    public conexion() {
+
         try {
             Class.forName(jdbc_driver);
-            cn=DriverManager.getConnection(jdbc_url+bd, jdbc_user, jdbc_pass);
-            
+            cn = DriverManager.getConnection(jdbc_url + bd, jdbc_user, jdbc_pass);
+
         } catch (Exception e) {
             System.out.println(e.toString());
         }
- 
+
     }
-    
-    public  Connection RetornarConeccion ()
-    {
+
+    public Connection RetornarConeccion() {
         return cn;
     }
-    
-   
-
 }
